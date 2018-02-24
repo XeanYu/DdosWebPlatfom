@@ -1,0 +1,55 @@
+<style>
+    .of {margin-top: 20px;}
+</style>
+<div class="mdui-container doc-container">
+    <!-- title -->
+    <div class="of">
+        <h1 class="doc-title mdui-text-color-red">留言处理</h1>
+    </div>
+
+    <div class="mdui-divider"></div>
+    <h3><strong>留言</strong></h3>
+    <hr>
+    <div>
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h1 class="panel-title"><strong>留言管理</strong></h1>
+          </div>
+
+
+          <div class="panel-body row" id="body">
+          {% for say in says %}
+              <div class="col-lg-5 col-lg-push-1" id="{{ say.id }}">
+                <div class="panel panel-info">
+                    <!-- 标题 -->
+                    <div class="panel-heading">
+                          <h3 class="panel-title" id="title">
+                              <strong class="text-left">{{ say.title }}</strong>
+                              {% if say.is_look %}
+                                <span class="title label label-success mdui-float-right"> 已被浏览 </span>
+                              {% else %}
+                                <span class="title label label-danger mdui-float-right"> 未被浏览 </span>
+                              {% endif %}
+                            <strong class=""><span class="label label-success mdui-text-color-purple"> {{ say.user }} </span></strong>
+                          </h3>
+                    </div>
+                      <!-- 身体 -->
+
+                      <div class="panel-body" id="pbody">
+                        <strong class="text-success">{{ say.text }}</strong>
+                        {% if not say.is_look %}
+                          <span class="body label label-info text-right ">发布于 {{ say.say_date }}</span>
+                        {% else %}
+                          <span class="body label label-primary text-right" >被查看于 {{ say.look_date }}</span>
+                          {% endif %}
+                        <button type="button" class="submit btn btn-info" style="float: right" id="{{ say.id }}"><strong>读</strong></button>
+                      </div>
+                </div>
+              </div>
+          {% endfor %}
+          </div>
+
+        </div>
+    </div>
+<script src="{{ url_for('static',filename='exts_js/os_say.js') }}" type="text/javascript"></script>
+</div>

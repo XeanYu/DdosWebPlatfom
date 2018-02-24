@@ -1,0 +1,93 @@
+<style>
+    .of {margin-top: 20px;}
+</style>
+<script type="text/javascript" src="{{ url_for('static',filename='exts_js/del_vip.js') }}"></script>
+<div class="mdui-container doc-container">
+    <!-- title -->
+    <div class="of">
+        <h1 class="doc-title mdui-text-color-red">套餐 SET</h1>
+    </div>
+
+    <div class="mdui-divider"></div>
+    <h3><strong>套餐管理</strong></h3>
+
+    <form action="{{ url_for('main.vip_set') }}" method="post" id="vip">
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">account_balance</i>
+                <label class="mdui-textfield-label">套餐名称 (不可以和其他套餐重复,如果名称重复,则自动修改)</label>
+                <input class="mdui-textfield-input" type="text" value="" name="name" required="required" id="name"/>
+            </div>
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">format_list_numbered</i>
+                <label class="mdui-textfield-label">压测次数 /Day</label>
+                <input class="mdui-textfield-input" type="number" value="" name="attack_num" required="required" id="attack_num"/>
+            </div>
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">attach_money</i>
+                <label class="mdui-textfield-label">价格 (RMB)</label>
+                <input class="mdui-textfield-input" type="number" value="" name="yuan" required="required" id="yuan"/>
+            </div>
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">access_time</i>
+                <label class="mdui-textfield-label">压测最大时间 (S)</label>
+                <input class="mdui-textfield-input" type="number" value="" name="use_time" required="required" id="use_time"/>
+            </div>
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">http</i>
+                <label class="mdui-textfield-label">套餐购买链接</label>
+                <input class="mdui-textfield-input" type="url" value="" name="pay_url" required="required" id="pay_url"/>
+            </div>
+
+            <br>
+            <div class="mdui-float-right">
+                <button class="mdui-fab mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">create</i></button>
+            </div>
+    </form>
+
+    <div class="mdui-divider"></div>
+
+    <div class="row of">
+        <h3 class="page-header">VIP</h3>
+        <div class="mdui-table-fluid">
+            <table class="mdui-table">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>压测次数 \Day</th>
+                <th>压测最大时间 (S)</th>
+                <th>价格 (RMB)</th>
+                <th>购买链接</th>
+                <th>#</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+            <!-- For循环服务器 -->
+              {% for vip in vips %}
+
+                <tr class="{{ vip.name }}">
+                    <td>{{ vip.name }}</td>
+                    <td>{{ vip.attack_num }}</td>
+                    <td>{{ vip.max_use_time }}</td>
+                    <td>{{ vip.yuan }}</td>
+                    <td><a href="{{ vip.pay_url }}"><i class="mdui-icon material-icons">add_shopping_cart</i></a></td>
+                    <td><button class="del mdui-btn mdui-btn-raised mdui-ripple" id="{{ vip.name }}">Delete</button></td>
+                </tr>
+
+              {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+
+    </div>
+    <hr>
+    <br>
+
+<script src="{{ url_for('static',filename='exts_js/vip_set.js') }}" type="text/javascript" language="JavaScript"></script>
+
+</div>

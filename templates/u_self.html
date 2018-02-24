@@ -1,0 +1,117 @@
+<style>
+    .of {margin-top: 20px;}
+
+</style>
+<!-- Sweetalert CSS file -->
+<div class="mdui-container doc-container">
+    <div class="of">
+        <h1 class="doc-title mdui-text-color-theme">我的资料</h1>
+    </div>
+
+    <form action="{{ url_for('main.self') }}" method="post" id="self">
+    <div class="mdui-textfield">
+      <i class="mdui-icon material-icons">format_list_numbered</i>
+      <label class="mdui-textfield-label"><strong>您的 User ID</strong></label>
+      <input class="mdui-textfield-input" type="text" value="{{ myself.uid }}" disabled/>
+      <div class="mdui-textfield-helper">禁止修改</div>
+    </div>
+
+    <div class="mdui-textfield">
+      <i class="mdui-icon material-icons">account_circle</i>
+      <label class="mdui-textfield-label"><strong>您的用户名</strong></label>
+      <input class="mdui-textfield-input" type="text" value="{{ myself.username }}" disabled />
+      <div class="mdui-textfield-helper">禁止修改</div>
+    </div>
+
+    <div class="mdui-textfield">
+      <i class="mdui-icon material-icons">email</i>
+      <label class="mdui-textfield-label">您的邮箱</label>
+      <input class="mdui-textfield-input" type="email" value="{{ myself.mail }}" name="email" required="required" />
+      <div class="mdui-textfield-helper">容许修改</div>
+    </div>
+
+    <div class="mdui-textfield">
+      <i class="mdui-icon material-icons">assessment</i>
+      <label class="mdui-textfield-label">当前身份</label>
+      <input class="mdui-textfield-input" type="text" value="{{ vip.name }}" disabled/>
+      <div class="mdui-textfield-helper">禁止修改</div>
+    </div>
+
+    <!-- BTN commit form -->
+        <div class="mdui-float-right">
+            <button class="col-lg-push-10 mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple" id="btn"><i class="mdui-icon material-icons">border_color</i></button>
+        </div>
+    </form>
+
+    <!-- look up Login_logs -->
+    <div class="container-fluid">
+    <div class="row">
+        <h3 class="page-header text-center">Login Logs</h3>
+        <div class="mdui-table-fluid">
+            <table class="mdui-table">
+                <thread>
+                    <tr>
+                        <th>用户名</th>
+                        <th>浏览器</th>
+                        <th>设备</th>
+                        <th>操作系统</th>
+                        <th>登录IP</th>
+                        <th>平台</th>
+                        <th>登录时间</th>
+                    </tr>
+                </thread>
+
+                <tbody>
+                {% for log in login_log %}
+                <tr>
+                    <td>{{ log.username }}</td>
+                    <td>{{ log.browser }}</td>
+                    <td>{{ log.device }}</td>
+                    <td>{{ log.os }}</td>
+                    <td>{{ log.ip }}</td>
+                    <td>{{ log.platform }}</td>
+                    <td>{{ log.login_date }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <h4 class="page-header text-center">正在浏览第 <code>{{ logs.page }}</code> 页</h4>
+        </div>
+
+        <div class="of page" id="page">
+            <div class="mdui-float-left">
+                <a href="{{ url_for('main.self',page=1) }}#page">
+                <button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple">首</button>
+                </a>
+            </div>
+            {% if logs.page > 1 %}
+            <div class="mdui-float-left">
+                <a href="{{ url_for('main.self',page=logs.prev_num) }}#page">
+                <button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">chevron_left</i></button>
+                </a>
+            </div>
+            {% endif %}
+
+
+            <div class="mdui-float-right">
+                <a href="{{ url_for('main.self',page=logs.pages) }}#page">
+                <button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple">尾</button>
+                </a>
+            </div>
+
+            <div class="mdui-float-right">
+                <a href="{{ url_for('main.self',page=logs.next_num) }}#page">
+                <button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">chevron_right</i></button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <hr>
+
+
+</div>
+<!-- Sweetalert JAVASCRIPT File -->
+<script src="{{ url_for('static',filename='exts_js/changeself.js') }}"></script>

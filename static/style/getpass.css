@@ -1,0 +1,61 @@
+body{
+    background: #f1f1f1;
+}
+
+.box{
+    box-shadow: 0 0 9px rgba(0,0,0,.1);
+    border-radius: 10px;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    height: 500px;
+    /*width: 600px;*/
+}
+
+.box_title{
+    letter-spacing: 40px;
+    padding-top: 10px;
+}
+
+h3{
+    font-size: 30px;
+    font-weight: 500;
+
+}
+
+.user{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60px;
+
+}
+
+input{
+    font-weight: 800;
+}
+
+.alert{
+    margin-top: 10px;
+}
+
+.info{
+    font-weight: 600;
+}
+
+.off{
+    font-size: 25px;
+    float: right;
+}
+.input-title{
+    margin-bottom: 0px;
+    margin-top: 20px;
+    font-weight: 600;
+    color: lightslategray;
+}
+
+.submit{
+    margin-top: 10px;
+    float: right;
+}

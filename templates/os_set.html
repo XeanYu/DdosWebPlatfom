@@ -1,0 +1,51 @@
+<style>
+    .of {margin-top: 20px;}
+</style>
+
+<!-- 平台管理 -->
+<div class="mdui-container doc-container">
+    <div class="of">
+        <h1 class="doc-title mdui-text-color-red">平台管理</h1>
+    </div>
+
+    <div>
+        <!-- 平台配置 -->
+        <div class="mdui-divider"></div>
+        <h3><kbd><strong>首页 SEO</strong></kbd> </h3>
+
+        <form action="{{ url_for('main.os_set') }}" method="post" id="os_form">
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">account_balance</i>
+                <label class="mdui-textfield-label">平台名称</label>
+                <input class="mdui-textfield-input" type="text" value="{{ seo.name }}" name="name" required="required"/>
+            </div>
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">title</i>
+                <label class="mdui-textfield-label">首页标题 【 title 】</label>
+                <input class="mdui-textfield-input" type="text" value="{{ seo.title }}" name="title" required="required"/>
+            </div>
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">location_searching</i>
+                <label class="mdui-textfield-label">首页关键字 【 keywords 】 <small>请用英文状态下的逗号进行分割</small></label>
+                <input class="mdui-textfield-input" type="text" value="{{ seo.keywords }}" name="keywords" required="required"/>
+            </div>
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">description</i>
+                <label class="mdui-textfield-label">首页描述 【 description 】</label>
+                <input class="mdui-textfield-input" type="text" value="{{ seo.description }}" name="description" required="required"/>
+            </div>
+
+            <br>
+            <div class="mdui-float-right">
+                <button class="mdui-fab mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">create</i></button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="{{ url_for('static',filename='exts_js/change_os.js') }}"></script>

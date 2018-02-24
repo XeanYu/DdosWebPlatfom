@@ -1,0 +1,72 @@
+<style>
+    .of {margin-top: 20px;}
+</style>
+
+<div class="mdui-container doc-container">
+    <!--  -->
+    <div class="of">
+        <h1 class="doc-title mdui-text-color-red">公告管理</h1>
+    </div>
+
+    <div class="mdui-divider"></div>
+    <h3><strong>公告</strong></h3>
+
+    <form action="{{ url_for('main.placard') }}" method="post" id="placard">
+
+        <div class="mdui-textfield">
+            <i class="mdui-icon material-icons">title</i>
+            <label class="mdui-textfield-label">标题</label>
+            <input class="mdui-textfield-input" type="text" value="" name="title" required="required"/>
+        </div>
+
+        <div class="mdui-textfield">
+            <i class="mdui-icon material-icons">text_fields</i>
+            <label class="mdui-textfield-label">公告内容</label>
+            <input class="mdui-textfield-input" type="text" value="" name="text"/>
+        </div>
+
+
+        <br>
+        <div class="mdui-float-right">
+            <button class="mdui-fab mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">create</i></button>
+        </div>
+    </form>
+
+    <div class="mdui-divider"></div>
+
+    <div class="row of">
+        <h3 class="page-header">PlaCards</h3>
+        <div class="mdui-table-fluid">
+            <table class="mdui-table">
+            <thead>
+              <tr>
+                <th>标题</th>
+                <th>内容</th>
+                <th>作者</th>
+                <th>日期</th>
+                <th>#</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+            <!-- For循环服务器 -->
+              {% for placard in placards %}
+
+                <tr class="{{ placard.title }}">
+                    <td>{{ placard.title }}</td>
+                    <td>{{ placard.text }}</td>
+                    <td>{{ placard.author }}</td>
+                    <td>{{ placard.date }}</td>
+                    <td><button class="delplacard del mdui-btn mdui-btn-raised mdui-ripple" id="{{ placard.title }}">Delete</button></td>
+                </tr>
+
+              {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+
+    </div>
+    <hr>
+    <br>
+<script src="{{ url_for('static',filename='exts_js/placard_set.js') }}" type="text/javascript"></script>
+</div>

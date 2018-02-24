@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--注册页面 sgin_up-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>注册</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/sgin.css') }}" />
+
+    <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-push-3">
+                <div class="sgin">
+            <h3 class="page-header text-center size">
+                <t><a href="{{ url_for('main.sgin_in') }}" class="a login">登录&nbsp;</a></t>
+                <b>·</b>
+                <t><a href="{{ url_for('main.sgin_up') }}" class="action a">&nbsp;注册</a></t>
+            </h3>
+
+            <div>
+                <form class="form" action="{{ url_for('main.sgin_up') }}" method="post" accept-charset="UTF-8" id="user_info">
+
+                    <div class="input">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <input type="text" id="username" class=" input_user" placeholder=" 用户名" name="username" required="required"/>
+                        <div class="text-warning alert_user"><strong><small>用户名长度不能超过64字节</small></strong></div>
+                    </div>
+
+                    <div class="input">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <input type="email" id="email" class="input_user" placeholder=" 邮箱" name="email" required="required"/>
+                        <div class="text-warning alert_email"><strong><small>邮箱长度不可以超过124字节</small></strong></div>
+                    </div>
+
+                    <div class="input">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        <input type="password" id="password" class="input_user" placeholder=" 密码" name="password" required="required"/>
+                        <div class="text-warning alert_pass"><strong><small>密码长度不可以超过124字节</small></strong></div>
+                    </div>
+
+                    <div class="input">
+                        <span class="glyphicon glyphicon-console"></span>
+                        <input type="text" id="code" class="input_user" placeholder=" 私密代码" name="code" required="required"/>
+                        <div class="text-warning alert_code"><strong><small>私密代码长度不可以超过40字节</small></strong></div>
+                    </div>
+
+                     <div>
+                        <p class="text-danger"><strong id="alert"></strong></p>
+                        <co class="code">随机码 ==> <bg class="text-danger">{{ num_code }}</bg></co>
+                        <div class="input code_box">
+                            <span class="glyphicon glyphicon-triangle-right"></span>
+                            <input type="text" id="random_code" class="input_user" placeholder="随机码" name="random_code" required="required"/>
+                        </div>
+                     </div>
+                        <button class="sgin_btn btn btn-danger btn-block">注 册</button>
+
+                </form></div></div>
+            </div>
+            </div>
+
+        <br>
+            <div class="row">
+                <div class="col-lg-3 col-lg-push-0">
+                <div class="panel panel-danger">
+                    <div class="panel-heading text-center"><h2><span class="glyphicon glyphicon-indent-right"></span> 压力测试</h2></div>
+                    <div class="panel-body"><h4>在这个时代<br>压力总是使用相同的冗余代码<br>我们在应力达到瞬时攻击的可能。你不会失望的！</h4></div>
+            </div></div>
+
+            <div class="col-lg-3 col-lg-push-1">
+                <div class="panel panel-info">
+                    <div class="panel-heading text-center"><h2><span class="glyphicon glyphicon-user"></span> 客户</h2></div>
+                    <div class="panel-body"><h4>我们珍视我们的客户。当你购买一个订阅我们的DDOS服务，你可以有购买的信心，总是会有支持，所以你可以保持IP启动！.</h4></div>
+
+                </div>
+            </div>
+
+        <div class="col-lg-3 col-lg-push-2">
+                <div class="panel panel-success">
+                    <div class="panel-heading text-center"><h2><span class="glyphicon glyphicon-headphones"></span> 客服</h2></div>
+                    <div class="panel-body"><h4>在任何时间<br>我们都会为您提供一个工作服务<br>让你能够放心的使用我们的程序。.</h4></div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static',filename='exts_js/sgin_up.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/canvas-nest.js') }}"></script>
+</body>
+</html>

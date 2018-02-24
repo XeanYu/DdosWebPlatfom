@@ -1,0 +1,117 @@
+<!-- USER_INDEX -->
+<style>
+    .of {margin-top: 30px;}
+
+</style>
+
+<div class="mdui-container doc-container">
+
+    <!-- 三块面板 -->
+    <div class="row">
+
+        <!-- 用户数量 -->
+        <div class="mdui-appbar col-lg-3 of">
+            <h4 class="page-header">总用户数量</h4>
+
+            <div class="col-lg-2">
+                <i class="mdui-icon material-icons mdui-text-color-red mdui-typo-display-2">account_balance</i>
+            </div>
+
+            <div class="col-lg-4 col-lg-push-1 mdui-typo-display-1 mdui-text-color-blue">
+                ↑{{ index_msg.user_num }}
+            </div>
+        </div>
+
+        <!-- 压测次数 -->
+        <div class="mdui-appbar col-lg-3 col-lg-push-1 of">
+            <h4 class="page-header">总压测次数</h4>
+
+            <div class="col-lg-2">
+                <i class="mdui-icon material-icons mdui-text-color-blue mdui-typo-display-2">insert_chart</i>
+            </div>
+
+            <div class="col-lg-4 col-lg-push-1 mdui-typo-display-1 mdui-text-color-yellow">
+                ↑{{ index_msg.ddos_num }}
+            </div>
+        </div>
+
+        <!-- 服务器数量 -->
+        <div class="mdui-appbar col-lg-3 col-lg-push-2 of">
+            <h4 class="page-header">服务器数量</h4>
+
+            <div class="col-lg-2">
+                <i class="mdui-icon material-icons mdui-text-color-brown mdui-typo-display-2">kitchen</i>
+            </div>
+
+            <div class="col-lg-4 col-lg-push-1 mdui-typo-display-1 mdui-text-color-green">
+                ↑{{ index_msg.server_num }}
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 公告 -->
+    <div class="row of">
+    <h3 class="page-header">平台公告 <small><strong>最新的平台公告都在这里哦!</strong></small></h3>
+    <div class="mdui-table-fluid">
+          <table class="mdui-table">
+            <thead>
+              <tr>
+                <th>标题</th>
+                <th>内容</th>
+                <th>日期</th>
+                <th>作者</th>
+              </tr>
+            </thead>
+            <tbody>
+            <!-- For循环公告 -->
+              {% for gg in ggs %}
+                <tr>
+                    <td><strong>{{ gg.title }}</strong></td>
+                    <td><strong>{{ gg.text }}</strong></td>
+                    <td><strong>{{ gg.date }}</strong></td>
+                    <td><strong>{{ gg.author }}</strong></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    </div>
+
+    <!-- server -->
+    <div class="row of">
+        <h3 class="page-header">服务器</h3>
+        <div class="mdui-table-fluid">
+
+            <table class="mdui-table">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>攻击</th>
+                <th>目标</th>
+                <th>停止功能</th>
+                <th>状态</th>
+              </tr>
+            </thead>
+            <tbody>
+            <!-- For循环服务器 -->
+              {% for server in servers %}
+                <tr>
+                    <td>{{ server.name }}</td>
+                    <td>{{ server.gj }}</td>
+                    <td>{{ server.mubiao }}</td>
+                    <td>{{ server.status }}</td>
+                    {% if server.connect %}
+                    <td><span class="label label-success">连接成功</span></td>
+                    {% else %}
+                    <td><span class="label label-danger">连接失败</span></td>
+                    {% endif %}
+
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    </div>
+
+</div>

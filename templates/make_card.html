@@ -1,0 +1,143 @@
+<style>
+    .of {margin-top: 20px;}
+</style>
+
+<!-- 平台管理 -->
+<div class="mdui-container doc-container">
+    <div class="of">
+        <h1 class="doc-title mdui-text-color-red">卡密管理</h1>
+    </div>
+
+    <div class="mdui-divider"></div>
+    <h3><strong>卡密生成</strong></h3>
+
+    <div>
+        <form action="{{ url_for('main.make_card') }}" method="post" id="cards">
+
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">credit_card</i>
+              <label class="mdui-textfield-label">卡密张数</label>
+              <input class="mdui-textfield-input" type="number" name="cards" required="required" value="" placeholder="50"/>
+            </div>
+            <div class="row">
+            <div class="col-lg-2">
+                <i class="mdui-icon material-icons">av_timer</i>&nbsp;
+                <select class="mdui-select" mdui-select name="time">
+                    <option value="86400">一天</option>
+                    <option value="2592000">一月</option>
+                    <option value="7776000">一季度</option>
+                    <option value="31536000">一年</option>
+                </select>
+            </div>
+            <div class="mdui-float-right">
+                <i class="mdui-icon material-icons">shopping_basket</i>&nbsp;
+                <select class="mdui-select" mdui-select name="vip">
+                    {% for vip in vips %}
+                    <option value="{{ vip.id }}">{{ vip.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            </div>
+            <br>
+            <div class="mdui-float-right">
+                <button class="mdui-fab mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">check</i></button>
+            </div>
+        </form>
+    </div>
+    <div class="container-fluid of">
+    <div class="row">
+        <h3 class="page-header text-center"></h3>
+        <div class="mdui-table-fluid">
+            <table class="mdui-table">
+                <thread>
+                    <tr>
+                        <th>套餐</th>
+                        <th>卡密</th>
+                        <th>套餐时间</th>
+                        <th>情况</th>
+                        <th>使用时间</th>
+                        <th>使用者</th>
+                        <th>生成时间</th>
+                    </tr>
+                </thread>
+
+                <tbody>
+                {% for card in cards %}
+                <tr id="{{ card.id }}">
+                    <td>{{ card.name }}</td>
+                    <td><button class="mdui-btn mdui-btn-raised mdui-ripple" id="{{ card.id }}">查看</button></td>
+                    <td>
+                        {% if card.time == "86400" %}
+                            一天
+                        {% elif card.time == "2592000" %}
+                            一月
+                        {% elif card.time == "7776000" %}
+                            一季度
+                        {% elif card.time ==  "31536000" %}
+                            一年
+                        {% else %}
+                            未知
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if card.is_user %}
+                            未使用
+                        {% else %}
+                            已使用
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if card.is_user %}
+                            {{ card.use_date }}
+                        {% else %}
+                            未使用
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if card.is_user %}
+                            {{ card.use_user }}
+                        {% else %}
+                            未使用
+                        {% endif %}
+                    </td>
+                    <td>{{ card.make_date }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <h4 class="page-header text-center">正在浏览第 <code>{{ look.page }}</code> 页</h4>
+        </div>
+
+        <div class="of page" id="page">
+            <div class="mdui-float-left">
+                <a href="{{ url_for('main.make_card',page=1) }}#page">
+                <button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple">首</button>
+                </a>
+            </div>
+            {% if look.page > 1 %}
+            <div class="mdui-float-left">
+                <a href="{{ url_for('main.make_card',page=look.prev_num) }}#page">
+                <button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">chevron_left</i></button>
+                </a>
+            </div>
+            {% endif %}
+
+
+            <div class="mdui-float-right">
+                <a href="{{ url_for('main.make_card',page=look.pages) }}#page">
+                <button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple">尾</button>
+                </a>
+            </div>
+
+            <div class="mdui-float-right">
+                <a href="{{ url_for('main.make_card',page=look.next_num) }}#page">
+                <button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">chevron_right</i></button>
+                </a>
+            </div>
+
+        </div>
+        </div>
+    </div>
+<script src="{{ url_for('static',filename='exts_js/make_card.js') }}"></script>
+</div>

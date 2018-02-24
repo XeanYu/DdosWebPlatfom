@@ -1,0 +1,122 @@
+
+        body{
+            background-color: #f1f1f1;
+        }
+
+        .sgin{
+            margin-top: 50px;
+            margin-right: auto;
+            margin-left: auto;
+
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 0 9px rgba(0,0,0,.1);
+            vertical-align: middle;
+            padding: 50px 50px 30px;
+        }
+        .size{
+            color: rgb(150, 150, 150);
+        }
+        .a{
+            text-decoration:none;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 19.8px;
+            text-align: center;
+            text-decoration-style: solid;
+        }
+        .a:hover{
+
+            border-bottom-color: rgb(234, 111, 90);
+            border-bottom-style: solid;
+            text-decoration: none;
+            border-bottom-width: 2px;
+
+        }
+
+        a{
+            color: rgb(150, 150, 150);
+            text-decoration: none;
+        }
+
+        .action{
+            color: rgb(234, 111, 90);
+            border-bottom-color: rgb(234, 111, 90);
+        }
+        .action:hover{
+            color: rgb(234, 111, 90);
+        }
+
+        .login:hover{
+             color: rgb(150, 150, 150);
+        }
+        .form{
+            margin-top: 50px;
+        }
+
+        .input{
+            font-weight: 600;
+            font-size: 18px;
+            display: block;
+            margin-top: 20px;
+            width: 100%;
+            border-bottom: 1px solid #ebebeb;
+            border-top: 1px solid #ebebeb;
+        }
+
+        .input_user{
+            display: inline;
+            outline: none;
+            border: none;
+            height: 40px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .code_box{
+            display: block;
+            margin-top: 5px;
+        }
+
+        .code{
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .sgin_btn{
+            margin-top: 40px;
+            height: 50px;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 30px;
+        }
+
+        bg{
+            font-size: 18px;
+        }
+
+        .pan{
+            background-color: background-color: #f1f1f1;;
+            display: block;
+            float: right;
+            margin-top: 50px;
+            box-shadow: 0 0 9px rgba(0,0,0,.1);
+        }
+
+        .msg{
+            font-size: 8px;
+        }
+
+        .login_temp{
+            height: 600px;
+        }
+        .p{
+            margin-top: 10px;
+        }
